@@ -103,7 +103,6 @@ sidebarLayout(
                multiple = F), width = 3
   ),
   
-  # Show a plot of the generated distribution
   mainPanel(
     plotlyOutput("plot")
   )
