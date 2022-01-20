@@ -2,53 +2,54 @@ library(tidyverse)
 library(shiny)
 library(timetk)
 library(plotly)
+library(lubridate)
 
-source("TNOTE_10.R")
-rm(list= ls()[!(ls() %in% c('tnote_10'))])
+# source("TNOTE_10.R")
+# rm(list= ls()[!(ls() %in% c('tnote_10'))])
+# 
+# source("BRENT.R")
+# rm(list= ls()[!(ls() %in% c('brent', 'tnote_10'))])
+# 
+# source("HOUST.R")
+# rm(list= ls()[!(ls() %in% c('houst', 'brent', 'tnote_10'))])
+# 
+# source("INCOME_PER_CAP.R")
+# rm(list= ls()[!(ls() %in% c('income_per_cap', 'houst', 'brent', 'tnote_10'))])
+# 
+# source("NONFARM.R")
+# rm(list= ls()[!(ls() %in% c('nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
+# 
+# source("PCE.R")
+# rm(list= ls()[!(ls() %in% c('pce', 'nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
+# 
+# source("RES_INVEST.R")
+# rm(list= ls()[!(ls() %in% c('res_invest', 'pce', 'nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
+# 
+# source("IND_PROD_INDEX.R")
+# rm(list= ls()[!(ls() %in% c('ind_prod_index', 'res_invest', 'pce', 'nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
+# 
+# 
+# external_data <- houst %>%
+#   inner_join(brent) %>%
+#   inner_join(income_per_cap) %>%
+#   inner_join(nonfarm) %>%
+#   inner_join(pce) %>%
+#   inner_join(nonfarm) %>%
+#   inner_join(ind_prod_index) %>%
+#   inner_join(tnote_10) %>%
+#   inner_join(res_invest)
+# 
+# 
+# df <- external_data %>%
+#   mutate(
+#     horizon = if_else(date < today(), "observed", "forecast")
+#   )
+# 
+# 
+# saveRDS(df, "exogenous_forecasts.rds")
 
-source("BRENT.R")
-rm(list= ls()[!(ls() %in% c('brent', 'tnote_10'))])
 
-source("HOUST.R")
-rm(list= ls()[!(ls() %in% c('houst', 'brent', 'tnote_10'))])
-
-source("INCOME_PER_CAP.R")
-rm(list= ls()[!(ls() %in% c('income_per_cap', 'houst', 'brent', 'tnote_10'))])
-
-source("NONFARM.R")
-rm(list= ls()[!(ls() %in% c('nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
-
-source("PCE.R")
-rm(list= ls()[!(ls() %in% c('pce', 'nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
-
-source("RES_INVEST.R")
-rm(list= ls()[!(ls() %in% c('res_invest', 'pce', 'nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
-
-source("IND_PROD_INDEX.R")
-rm(list= ls()[!(ls() %in% c('ind_prod_index', 'res_invest', 'pce', 'nonfarm', 'income_per_cap', 'houst', 'brent', 'tnote_10'))])
-
-
-external_data <- houst %>%
-  inner_join(brent) %>%
-  inner_join(income_per_cap) %>%
-  inner_join(nonfarm) %>%
-  inner_join(pce) %>%
-  inner_join(nonfarm) %>%
-  inner_join(ind_prod_index) %>%
-  inner_join(tnote_10) %>%
-  inner_join(res_invest)
-
-
-df <- external_data %>%
-  mutate(
-    horizon = if_else(date < today(), "observed", "forecast")
-  )
-
-# # 
-# # saveRDS(df, "exogenous_forecasts.rds")
-
-
- # df <- read_rds("exogenous_forecasts.rds")
+ df <- read_rds("exogenous_forecasts.rds")
  
 
 # df %>%
